@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@influxdata/influxdb-client": "^1.35.0",
+    "@tensorflow/tfjs": "^4.22.0",
     "express": "^5.1.0",
     "framer-motion": "^12.23.24",
     "influxdb": "^0.0.1",
