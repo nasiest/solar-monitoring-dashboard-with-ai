@@ -1,4 +1,6 @@
-import React, { TextareaHTMLAttributes, forwardRef } from "react";
+import React, { forwardRef } from "react";
+import type { TextareaHTMLAttributes } from "react";
+
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
