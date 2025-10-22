@@ -1,3 +1,51 @@
+// app/api/socket/route.ts
+// import { NextRequest } from "next/server";
+// import mqtt from "mqtt";
+// import { writePowerData } from "../../../server/influxdb";
+// import { predictSolarPower } from "../../../server/tensorflow";
+
+// // MQTT setup (runs at cold start in serverless, can reconnect on each invocation)
+// const mqttClient = mqtt.connect("mqtt://broker.hivemq.com");
+// const topic = "solar/power";
+
+// mqttClient.on("connect", () => {
+//   console.log("✅ Connected to MQTT broker");
+//   mqttClient.subscribe(topic, (err) => {
+//     if (err) console.error("❌ MQTT subscribe failed", err);
+//     else console.log(`📡 Subscribed to topic: ${topic}`);
+//   });
+// });
+
+// // Health check endpoint
+// export const GET = async (_req: NextRequest) => {
+//   return new Response(JSON.stringify({ message: "Socket backend ready" }), { status: 200 });
+// };
+
+// // Placeholder for WebSocket (serverless cannot persist Socket.IO)
+// export const POST = async (_req: NextRequest) => {
+//   return new Response(JSON.stringify({ message: "WebSocket endpoint placeholder" }), { status: 200 });
+// };
+
+// // Handle MQTT messages asynchronously
+// mqttClient.on("message", async (_topic: string, message: Buffer) => {
+//   const power = parseFloat(message.toString());
+
+//   // Write to InfluxDB
+//   writePowerData(power);
+
+//   // Predict solar power
+//   let predictedPower: number = 0;
+//   try {
+//     const timeOfDay = new Date().getHours();
+//     predictedPower = await predictSolarPower(timeOfDay); // ✅ await for async function
+//   } catch (err) {
+//     console.error("⚠️ TensorFlow prediction error:", err);
+//   }
+
+//   console.log(`⚡ Power: ${power} kW | 🔮 Predicted: ${predictedPower} kW`);
+// });
+
+
 //app/api/socket.ts
 
 import express from "express";
